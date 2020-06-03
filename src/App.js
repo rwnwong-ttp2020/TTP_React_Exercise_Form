@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <FormEdit firstName="John" lastName="Doe" />
+        <FormEdit />
       </>
     );
   }
