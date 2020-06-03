@@ -1,24 +1,40 @@
 import React, { Component } from "react";
 
-class SelectForm extends Component {
+class FormEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = { usState: "CA" };
+    this.state = {
+      isEdit: true,
+      isSave: false,
+      isCancle: false,
+      firstName: "",
+      lastName: "",
+    };
+    this.handleOnClickEdit = this.handleOnClickEdit.bind(this);
   }
 
-  handleSelectChange = (event) => {
-    this.setState({ usState: event.target.value });
-  };
+  handleOnClickEdit() {
+    if (this.state.isEdit == true) this.setState({ isEdit: false });
+    else this.setState({ isEdit: true });
+  }
 
   render() {
+    console.log("state: line22", this.state);
     return (
-      <select value={this.state.usState} onChange={this.handleSelectChange}>
-        <option value="CA">California</option>
-        <option value="FL">Florida</option>
-        <option value="NY">New York</option>
-      </select>
+      <div>
+        <div>First name:</div>
+        <div>Last name:</div>
+        {this.state.isEdit ? (
+          <button onClick={this.handleOnClickEdit}>Edit</button>
+        ) : (
+          <div>
+            <button onClick={this.handleOnClickEdit}>Save</button>
+            <button onClick={this.handleOnClickEdit}>Cancel</button>{" "}
+          </div>
+        )}
+      </div>
     );
   }
 }
 
-export default SelectForm;
+export default FormEdit;
