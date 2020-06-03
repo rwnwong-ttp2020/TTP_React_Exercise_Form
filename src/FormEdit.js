@@ -1,61 +1,61 @@
 import React, { Component } from "react";
 
 class FormEdit extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
       isEdit: false,
-      isSave: false,
-      isCancle: false,
       firstName: "",
       lastName: "",
     };
-    this.handleOnClickEdit = this.handleOnClickEdit.bind(this);
-    this.handleOnClickEdit = this.handleOnClickSave.bind(this);
-    this.handleOnClickEdit = this.handleFirstName.bind(this);
-    this.handleOnClickEdit = this.handleLastName.bind(this);
   }
 
-  handleOnClickEdit() {
+  handleOnClickEdit = () => {
     this.setState({ isEdit: true });
-  }
+  };
 
-  handleOnClickSave() {
+  handleOnClickSave = () => {
     this.setState({ isEdit: false });
-    if (this.state.isSave === true) this.setState({ isEdit: true });
-  }
+  };
 
-  handleFirstName(event) {
+  handleOnClickCancel = () => {
     this.setState({ isEdit: false });
-    this.setState({ firstName: event.target.value });
-  }
+  };
 
-  handleLastName(event) {
-    this.setState({ isEdit: false });
-    this.setState({ firstName: event.target.value });
-  }
+  handleOnChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
   render() {
     console.log("state: line22", this.state);
+
     return (
       <div>
-        <div>First name:</div>
-        <div>Last name:</div>
         {!this.state.isEdit ? (
-          <button onClick={this.handleOnClickEdit}>Edit</button>
+          <div>
+            <div>First name: {this.state.firstName} </div>
+            <div>Last name: {this.state.lastName} </div>
+            <button onClick={this.handleOnClickEdit}>Edit</button>
+          </div>
         ) : (
           <div>
-            <button onClick={this.handleOnClickSave}>Save</button>
             <input
               type="text"
               name="firstName"
-              onChange={this.handleOnClickEdit}
+              placeholder={this.state.firstName}
+              onChange={this.handleOnChange}
             />
-            <button onClick={this.handleOnClickEdit}>Cancel</button>{" "}
             <input
               type="text"
-              name={this.state.lastName}
-              onChange={this.handleLastName}
+              name="lastName"
+              placeholder={this.state.lastName}
+              onChange={this.handleOnChange}
             />
+            <button onClick={this.handleOnClickSave}>Save</button>
+            <button onClick={this.handleOnClickCancel}>Cancel</button>{" "}
           </div>
         )}
       </div>
