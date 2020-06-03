@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import FormTest from "./FormTest";
-import SelectForm from "./SelectForm";
-import Decrement from "./Decrement";
+import FormEdit from "./FormEdit";
+
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <>
-        <SelectForm />
+        <FormEdit />
       </>
     );
   }
