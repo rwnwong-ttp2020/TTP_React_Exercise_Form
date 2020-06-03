@@ -55,7 +55,7 @@ class FormEdit extends Component {
               onChange={this.handleOnChange}
             />
             <button onClick={this.handleOnClickSave}>Save</button>
-            <button onClick={this.handleOnClickCancel}>Cancel</button>{" "}
+            <button onClick={this.handleOnClickCancel}>Cancel</button>
           </div>
         )}
       </div>
